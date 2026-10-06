@@ -1,0 +1,204 @@
+<template>
+  <style>
+    @font-face { font-family: "Newsreader"; src: local("Newsreader"), local("Georgia"); }
+    @font-face { font-family: "Hanken Grotesk"; src: local("Hanken Grotesk"), local("system-ui"); }
+    @font-face { font-family: "DM Mono"; src: local("DM Mono"), local("monospace"); }
+
+    #root {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      font-family: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #1F2BE0;
+      box-sizing: border-box;
+    }
+
+    .clip {
+      position: absolute;
+      inset: 0;
+      width: 1080px;
+      height: 1920px;
+    }
+
+    .f06-bg {
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(to right, rgba(31, 43, 224, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(31, 43, 224, 0.08) 1px, transparent 1px);
+      background-size: 36px 36px;
+    }
+
+    .f06-hairline-top {
+      position: absolute;
+      top: 60px;
+      left: 60px;
+      right: 60px;
+      height: 2px;
+      background: #1F2BE0;
+    }
+    .f06-hairline-bottom {
+      position: absolute;
+      bottom: 340px;
+      left: 60px;
+      right: 60px;
+      height: 2px;
+      background: #1F2BE0;
+    }
+
+    .f06-header {
+      position: absolute;
+      top: 80px;
+      left: 60px;
+      right: 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: "DM Mono", monospace;
+      font-size: 22px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .f06-container {
+      position: absolute;
+      top: 150px;
+      left: 60px;
+      right: 60px;
+      bottom: 360px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 36px;
+    }
+
+    .f06-main-card {
+      width: 100%;
+      border: 3px solid #1F2BE0;
+      background: #F0EBDE;
+      padding: 60px 40px;
+      box-shadow: 16px 16px 0px #1F2BE0;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .f06-card-tag {
+      display: inline-block;
+      background: #1F2BE0;
+      color: #F0EBDE;
+      padding: 8px 26px;
+      font-family: "DM Mono", monospace;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      margin-bottom: 24px;
+    }
+
+    .f06-title {
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 72px;
+      line-height: 1.2;
+      font-weight: 900;
+      color: #1F2BE0;
+      margin-bottom: 30px;
+    }
+
+    .f06-check-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      text-align: left;
+      margin: 0 auto 36px auto;
+      max-width: 680px;
+    }
+
+    .f06-check-item {
+      font-size: 32px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: #1F2BE0;
+    }
+
+    .f06-cta-bubble {
+      border: 3px dashed #1F2BE0;
+      background: #E6E0CE;
+      padding: 30px 24px;
+      margin-top: 10px;
+    }
+
+    .f06-cta-question {
+      font-size: 38px;
+      font-weight: 800;
+      color: #1F2BE0;
+      margin-bottom: 12px;
+    }
+
+    .f06-cta-hint {
+      font-family: "DM Mono", monospace;
+      font-size: 26px;
+      color: #5560E5;
+      font-weight: 700;
+    }
+  </style>
+
+  <div id="root" data-composition-id="06-outro-cta" data-width="1080" data-height="1920">
+    <div class="clip f06-bg" data-start="0" data-duration="7.22" data-track-index="0"></div>
+
+    <div class="clip f06-content" data-start="0" data-duration="7.22" data-track-index="1">
+      <div class="f06-hairline-top"></div>
+      <div class="f06-header">
+        <span>SUMMARY // 总结与互动</span>
+        <span>INDEX // 06</span>
+      </div>
+
+      <div class="f06-container">
+        <div id="f06-card" class="f06-main-card">
+          <div class="f06-card-tag">YOUR DIGITAL VOICE // 你的声音分身</div>
+          
+          <div class="f06-title">
+            普通家用电脑就能跑<br/>
+            开启你的声音生产力
+          </div>
+
+          <div class="f06-check-list">
+            <div class="f06-check-item">
+              <span>✦</span> <span>有声书 & 讲小说变现</span>
+            </div>
+            <div class="f06-check-item">
+              <span>✦</span> <span>知识口播 & 自动化播客</span>
+            </div>
+            <div class="f06-check-item">
+              <span>✦</span> <span>100% 本地隐私安全，断网可用</span>
+            </div>
+          </div>
+
+          <div class="f06-cta-bubble">
+            <div class="f06-cta-question">你想用它来做什么？</div>
+            <div class="f06-cta-hint">💬 欢迎在评论区聊聊！[点赞 · 收藏]</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="f06-hairline-bottom"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    window.__timelines["06-outro-cta"] = tl;
+
+    // Entrance
+    tl.fromTo("#f06-card",
+      { opacity: 0, y: 50, scale: 0.94 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "back.out(1.2)" },
+      0.3
+    );
+  </script>
+</template>

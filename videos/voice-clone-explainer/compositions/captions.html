@@ -1,0 +1,237 @@
+<template id="captions-template" data-composition-id="captions" data-width="1080" data-height="1920">
+<style>
+@font-face { font-family: "Newsreader"; src: local("Newsreader"), local("Georgia"); }
+@font-face { font-family: "Hanken Grotesk"; src: local("Hanken Grotesk"), local("system-ui"); }
+@font-face { font-family: "DM Mono"; src: local("DM Mono"), local("monospace"); }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+
+
+<style data-brand-tokens>
+      :root {
+      --paper: #F0EBDE;
+      --paper-2: #E6E0CE;
+      --ink: #1F2BE0;
+      --ink-soft: #5560E5;
+      --grid: rgba(31,43,224,0.10);
+      --ink-faint: rgba(31,43,224,0.18);
+      --cap-ink: #1F2BE0;
+      --cap-canvas: #F0EBDE;
+      --cap-accent: #5560E5;
+      --cap-accent-2: #E6E0CE;
+      --font-display: "Newsreader", system-ui, serif;
+      --font-body: "Hanken Grotesk", system-ui, sans-serif;
+      --cap-band-top: 1600px;
+      --cap-band-height: 320px;
+      }
+    </style>
+
+<style>
+  #captions-root {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .caption-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    pointer-events: none;
+  }
+  /* the keep-out band, from captionBand(H) — frame content stays above it */
+  .caption-stage {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: var(--cap-band-top, 900px);
+    height: var(--cap-band-height, 180px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .caption-group {
+    /* every group is absolutely stacked over the SAME band — exactly one shown at a
+       time via opacity. Must be absolute: in-flow groups would lay out side-by-side. */
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+  }
+
+  /* THE cream card — graph-paper grid behind the line + top/bottom 1.5px cobalt
+     hairlines (cobalt's frame furniture), square corners, NO drop shadow */
+  .caption-pill {
+    position: relative;
+    max-width: 78%;
+    padding: 20px 44px 24px;
+    background: var(--cap-canvas, #f0ebde);
+    background-image:
+      linear-gradient(
+        to right,
+        color-mix(in srgb, var(--cap-ink, #1f2be0) 10%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--cap-ink, #1f2be0) 10%, transparent) 1px,
+        transparent 1px
+      );
+    background-size: 16px 16px;
+    border-top: 1.5px solid var(--cap-ink, #1f2be0);
+    border-bottom: 1.5px solid var(--cap-ink, #1f2be0);
+    border-radius: 0;
+  }
+  .caption-line {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.1em 0.34em;
+    font-family: "Newsreader", Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(40px, 4.4vw, 58px);
+    line-height: 1.16;
+    letter-spacing: -0.01em;
+  }
+
+  /* upcoming — faint cobalt, no block */
+  .caption-word {
+    display: inline-block;
+    padding: 0 0.06em;
+    color: color-mix(in srgb, var(--cap-ink, #1f2be0) 42%, var(--cap-canvas, #f0ebde));
+  }
+  /* current word — THE cobalt flat block (risograph knockout): a solid cobalt fill
+     via box-shadow spread = a hard square block w/o layout shift, no blur; the cream
+     paper reads on top */
+  .caption-word.is-active {
+    color: var(--cap-canvas, #f0ebde);
+    background: var(--cap-ink, #1f2be0);
+    box-shadow: 0 0 0 0.06em var(--cap-ink, #1f2be0);
+  }
+  /* already spoken — solid cobalt ink, block cleared */
+  .caption-word.is-spoken {
+    color: var(--cap-ink, #1f2be0);
+    background: transparent;
+    box-shadow: none;
+  }
+
+  /* optional per-word accents (dormant until a word-classer tags them) */
+  /* brand / key term — Newsreader italic, cobalt's only display inflection */
+  .caption-word.cap-brand {
+    font-style: italic;
+  }
+  /* numerals / data — the body sans voice, slightly recessed */
+  .caption-word.cap-num {
+    font-family: "Hanken Grotesk", ui-monospace, monospace;
+    color: color-mix(in srgb, var(--cap-ink, #1f2be0) 72%, var(--cap-canvas, #f0ebde));
+  }
+  /* emphasis — a cobalt hairline underline (no second hue; emphasis is the ink) */
+  .caption-word.cap-cta {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-color: var(--cap-accent, #5560e5);
+    text-underline-offset: 0.1em;
+  }
+
+  @media (max-aspect-ratio: 9/16) {
+    .caption-pill {
+      max-width: 92%;
+    }
+    .caption-line {
+      font-size: clamp(34px, 5.4vw, 48px);
+    }
+  }
+</style>
+
+<div
+  id="captions-root"
+  data-composition-id="captions"
+  data-timeline-locked
+  data-start="0"
+  data-duration="60.78"
+  data-fps="30"
+  data-width="1080"
+  data-height="1920"
+>
+  <div class="caption-layer" aria-hidden="true">
+    <div id="caption-stage" class="caption-stage"></div>
+  </div>
+</div>
+
+<script>
+  // captions.mjs injects the engine's scene-aware groups + real duration here.
+  var GROUPS = [{"id":"caption-group-0","frame":1,"start":0.1,"end":5.36,"text":"想用自己的声音讲小说、 录播客， 却不想天天泡录音棚？ 告诉你，","words":[{"id":"caption-word-0-0","text":"想用自己的声音讲小说、","start":0.1,"end":2.12},{"id":"caption-word-0-1","text":"录播客，","start":2.12,"end":2.86},{"id":"caption-word-0-2","text":"却不想天天泡录音棚？","start":2.86,"end":4.69},{"id":"caption-word-0-3","text":"告诉你，","start":4.64,"end":5.36}]},{"id":"caption-group-1","frame":1,"start":5.36,"end":8.88,"text":"现在的AI声音克隆， 早已经没有门槛了！","words":[{"id":"caption-word-1-0","text":"现在的AI声音克隆，","start":5.36,"end":7.15},{"id":"caption-word-1-1","text":"早已经没有门槛了！","start":7.15,"end":8.76}]},{"id":"caption-group-2","frame":2,"start":8.93,"end":16.23,"text":"先看最火的两个： GPT-SoVITS 狂揽 6 万多星， 只录 5 秒就能克隆， 中文生态最成熟；","words":[{"id":"caption-word-2-0","text":"先看最火的两个：","start":8.93,"end":10.17},{"id":"caption-word-2-1","text":"GPT-SoVITS 狂揽 6 万多星，","start":10.17,"end":13.28},{"id":"caption-word-2-2","text":"只录 5 秒就能克隆，","start":13.28,"end":14.99},{"id":"caption-word-2-3","text":"中文生态最成熟；","start":14.99,"end":16.23}]},{"id":"caption-group-3","frame":2,"start":16.23,"end":22.85,"text":"VoxCPM 拥有 3.7 万星， 支持 30 种语言， 情绪语速全能控， 还能直接商用。","words":[{"id":"caption-word-3-0","text":"VoxCPM 拥有 3.7 万星，","start":16.23,"end":18.87},{"id":"caption-word-3-1","text":"支持 30 种语言，","start":18.87,"end":20.42},{"id":"caption-word-3-2","text":"情绪语速全能控，","start":20.42,"end":21.66},{"id":"caption-word-3-3","text":"还能直接商用。","start":21.66,"end":22.75}]},{"id":"caption-group-4","frame":3,"start":22.85,"end":32.1,"text":"想跨语言？ 3.7 万星的 OpenVoice 主打即时多语种克隆， 轻量开源； 而 3.2 万星的 Fish Speech，","words":[{"id":"caption-word-4-0","text":"想跨语言？","start":22.85,"end":24.2},{"id":"caption-word-4-1","text":"3.7 万星的 OpenVoice 主打即时多语种克隆，","start":24.15,"end":28.2},{"id":"caption-word-4-2","text":"轻量开源；","start":28.2,"end":28.92},{"id":"caption-word-4-3","text":"而 3.2 万星的 Fish Speech，","start":28.92,"end":32.1}]},{"id":"caption-group-5","frame":3,"start":32.1,"end":34.97,"text":"中文自然度和情绪拉满， 商用需单独授权。","words":[{"id":"caption-word-5-0","text":"中文自然度和情绪拉满，","start":32.1,"end":33.69},{"id":"caption-word-5-1","text":"商用需单独授权。","start":33.69,"end":34.85}]},{"id":"caption-group-6","frame":4,"start":34.99,"end":42.81,"text":"还有 B 站开源的 IndexTTS， 拿下 2.4 万星， 专门搞定中文情绪和精细的时长控制。","words":[{"id":"caption-word-6-0","text":"还有 B 站开源的 IndexTTS，","start":34.99,"end":38.18},{"id":"caption-word-6-1","text":"拿下 2.4 万星，","start":38.18,"end":39.85},{"id":"caption-word-6-2","text":"专门搞定中文情绪和精细的时长控制。","start":39.85,"end":42.7}]},{"id":"caption-group-7","frame":5,"start":42.81,"end":51.01,"text":"觉得需要天价算力？ 有人只用一张 8G 显存的老显卡， 录了 12 秒声音， 全程断网就完成了克隆，","words":[{"id":"caption-word-7-0","text":"觉得需要天价算力？","start":42.81,"end":44.74},{"id":"caption-word-7-1","text":"有人只用一张 8G 显存的老显卡，","start":44.69,"end":47.52},{"id":"caption-word-7-2","text":"录了 12 秒声音，","start":47.52,"end":49.18},{"id":"caption-word-7-3","text":"全程断网就完成了克隆，","start":49.18,"end":51.01}]},{"id":"caption-group-8","frame":5,"start":51.01,"end":53.63,"text":"还给孩子生成了一整段睡前故事！","words":[{"id":"caption-word-8-0","text":"还给孩子生成了一整段睡前故事！","start":51.01,"end":53.51}]},{"id":"caption-group-9","frame":6,"start":53.66,"end":60.85,"text":"普通电脑就能跑， 完全属于你自己的声音分身。 你想用它来做什么？ 评论区聊聊！","words":[{"id":"caption-word-9-0","text":"普通电脑就能跑，","start":53.66,"end":55.11},{"id":"caption-word-9-1","text":"完全属于你自己的声音分身。","start":55.11,"end":57.47},{"id":"caption-word-9-2","text":"你想用它来做什么？","start":57.42,"end":59.29},{"id":"caption-word-9-3","text":"评论区聊聊！","start":59.29,"end":60.73}]}];
+  var DURATION = 60.78;
+
+  (function () {
+    var stage = document.getElementById("caption-stage");
+
+    // build DOM: one .caption-group per group, .caption-word per word
+    GROUPS.forEach(function (group, g) {
+      var groupEl = document.createElement("div");
+      groupEl.className = "caption-group";
+      groupEl.id = "caption-group-" + g;
+      var pill = document.createElement("div");
+      pill.className = "caption-pill";
+      var line = document.createElement("div");
+      line.className = "caption-line";
+      (group.words || []).forEach(function (w, i) {
+        var span = document.createElement("span");
+        span.className = "caption-word";
+        span.id = "caption-word-" + g + "-" + i;
+        span.textContent = String(w.text);
+        line.appendChild(span);
+      });
+      pill.appendChild(line);
+      groupEl.appendChild(pill);
+      stage.appendChild(groupEl);
+    });
+
+    window.__timelines = window.__timelines || {};
+    var tl = gsap.timeline({ paused: true });
+
+    GROUPS.forEach(function (group, g) {
+      var groupEl = document.getElementById("caption-group-" + g);
+      var words = group.words || [];
+      var next = GROUPS[g + 1];
+      var isLast = g === GROUPS.length - 1;
+      var start = Math.max(0, Number(group.start));
+      var end = isLast ? DURATION : Math.min(Number(next.start), Number(group.end) + 0.3);
+      if (end <= start) end = start + 0.01;
+
+      // group on/off — exactly one group visible at a time
+      tl.set(groupEl, { opacity: 1 }, start);
+      tl.set(groupEl, { opacity: 0 }, end);
+
+      // 3-state karaoke via className SETS — seek-safe (gsap.set applies on the
+      // engine's frame-by-frame seek; .call callbacks would NOT fire).
+      words.forEach(function (w, i) {
+        var el = document.getElementById("caption-word-" + g + "-" + i);
+        var at = Math.max(start, Number(w.start));
+        tl.set(el, { className: "caption-word" }, start); // upcoming (also resets on reverse-seek)
+        tl.set(el, { className: "caption-word is-active" }, at); // current
+        tl.fromTo(el, { scale: 0.985 }, { scale: 1, duration: 0.1, ease: "power3.out" }, at);
+        if (i + 1 < words.length) {
+          var nextAt = Math.max(start, Number(words[i + 1].start));
+          tl.set(el, { className: "caption-word is-spoken" }, nextAt); // demote when next activates
+        }
+      });
+      if (words.length) {
+        var lastEl = document.getElementById("caption-word-" + g + "-" + (words.length - 1));
+        var lastSpoken = Math.min(end, Number(words[words.length - 1].end) + 0.1);
+        tl.set(lastEl, { className: "caption-word is-spoken" }, lastSpoken);
+      }
+    });
+
+    // full-span anchor so the sub-comp timeline spans the whole video
+    tl.to({}, { duration: DURATION }, 0);
+    window.__timelines["captions"] = tl;
+  })();
+</script>
+
+<style>
+  .caption-line { line-height: 1.1 !important; }
+</style>
+</template>

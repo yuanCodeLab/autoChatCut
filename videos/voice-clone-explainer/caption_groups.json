@@ -1,0 +1,289 @@
+{
+  "total_duration_s": 60.78,
+  "width": 1080,
+  "height": 1920,
+  "groups": [
+    {
+      "id": "caption-group-0",
+      "frame": 1,
+      "start": 0.1,
+      "end": 5.36,
+      "text": "想用自己的声音讲小说、 录播客， 却不想天天泡录音棚？ 告诉你，",
+      "words": [
+        {
+          "id": "caption-word-0-0",
+          "text": "想用自己的声音讲小说、",
+          "start": 0.1,
+          "end": 2.12
+        },
+        {
+          "id": "caption-word-0-1",
+          "text": "录播客，",
+          "start": 2.12,
+          "end": 2.86
+        },
+        {
+          "id": "caption-word-0-2",
+          "text": "却不想天天泡录音棚？",
+          "start": 2.86,
+          "end": 4.69
+        },
+        {
+          "id": "caption-word-0-3",
+          "text": "告诉你，",
+          "start": 4.64,
+          "end": 5.36
+        }
+      ]
+    },
+    {
+      "id": "caption-group-1",
+      "frame": 1,
+      "start": 5.36,
+      "end": 8.88,
+      "text": "现在的AI声音克隆， 早已经没有门槛了！",
+      "words": [
+        {
+          "id": "caption-word-1-0",
+          "text": "现在的AI声音克隆，",
+          "start": 5.36,
+          "end": 7.15
+        },
+        {
+          "id": "caption-word-1-1",
+          "text": "早已经没有门槛了！",
+          "start": 7.15,
+          "end": 8.76
+        }
+      ]
+    },
+    {
+      "id": "caption-group-2",
+      "frame": 2,
+      "start": 8.93,
+      "end": 16.23,
+      "text": "先看最火的两个： GPT-SoVITS 狂揽 6 万多星， 只录 5 秒就能克隆， 中文生态最成熟；",
+      "words": [
+        {
+          "id": "caption-word-2-0",
+          "text": "先看最火的两个：",
+          "start": 8.93,
+          "end": 10.17
+        },
+        {
+          "id": "caption-word-2-1",
+          "text": "GPT-SoVITS 狂揽 6 万多星，",
+          "start": 10.17,
+          "end": 13.28
+        },
+        {
+          "id": "caption-word-2-2",
+          "text": "只录 5 秒就能克隆，",
+          "start": 13.28,
+          "end": 14.99
+        },
+        {
+          "id": "caption-word-2-3",
+          "text": "中文生态最成熟；",
+          "start": 14.99,
+          "end": 16.23
+        }
+      ]
+    },
+    {
+      "id": "caption-group-3",
+      "frame": 2,
+      "start": 16.23,
+      "end": 22.85,
+      "text": "VoxCPM 拥有 3.7 万星， 支持 30 种语言， 情绪语速全能控， 还能直接商用。",
+      "words": [
+        {
+          "id": "caption-word-3-0",
+          "text": "VoxCPM 拥有 3.7 万星，",
+          "start": 16.23,
+          "end": 18.87
+        },
+        {
+          "id": "caption-word-3-1",
+          "text": "支持 30 种语言，",
+          "start": 18.87,
+          "end": 20.42
+        },
+        {
+          "id": "caption-word-3-2",
+          "text": "情绪语速全能控，",
+          "start": 20.42,
+          "end": 21.66
+        },
+        {
+          "id": "caption-word-3-3",
+          "text": "还能直接商用。",
+          "start": 21.66,
+          "end": 22.75
+        }
+      ]
+    },
+    {
+      "id": "caption-group-4",
+      "frame": 3,
+      "start": 22.85,
+      "end": 32.1,
+      "text": "想跨语言？ 3.7 万星的 OpenVoice 主打即时多语种克隆， 轻量开源； 而 3.2 万星的 Fish Speech，",
+      "words": [
+        {
+          "id": "caption-word-4-0",
+          "text": "想跨语言？",
+          "start": 22.85,
+          "end": 24.2
+        },
+        {
+          "id": "caption-word-4-1",
+          "text": "3.7 万星的 OpenVoice 主打即时多语种克隆，",
+          "start": 24.15,
+          "end": 28.2
+        },
+        {
+          "id": "caption-word-4-2",
+          "text": "轻量开源；",
+          "start": 28.2,
+          "end": 28.92
+        },
+        {
+          "id": "caption-word-4-3",
+          "text": "而 3.2 万星的 Fish Speech，",
+          "start": 28.92,
+          "end": 32.1
+        }
+      ]
+    },
+    {
+      "id": "caption-group-5",
+      "frame": 3,
+      "start": 32.1,
+      "end": 34.97,
+      "text": "中文自然度和情绪拉满， 商用需单独授权。",
+      "words": [
+        {
+          "id": "caption-word-5-0",
+          "text": "中文自然度和情绪拉满，",
+          "start": 32.1,
+          "end": 33.69
+        },
+        {
+          "id": "caption-word-5-1",
+          "text": "商用需单独授权。",
+          "start": 33.69,
+          "end": 34.85
+        }
+      ]
+    },
+    {
+      "id": "caption-group-6",
+      "frame": 4,
+      "start": 34.99,
+      "end": 42.81,
+      "text": "还有 B 站开源的 IndexTTS， 拿下 2.4 万星， 专门搞定中文情绪和精细的时长控制。",
+      "words": [
+        {
+          "id": "caption-word-6-0",
+          "text": "还有 B 站开源的 IndexTTS，",
+          "start": 34.99,
+          "end": 38.18
+        },
+        {
+          "id": "caption-word-6-1",
+          "text": "拿下 2.4 万星，",
+          "start": 38.18,
+          "end": 39.85
+        },
+        {
+          "id": "caption-word-6-2",
+          "text": "专门搞定中文情绪和精细的时长控制。",
+          "start": 39.85,
+          "end": 42.7
+        }
+      ]
+    },
+    {
+      "id": "caption-group-7",
+      "frame": 5,
+      "start": 42.81,
+      "end": 51.01,
+      "text": "觉得需要天价算力？ 有人只用一张 8G 显存的老显卡， 录了 12 秒声音， 全程断网就完成了克隆，",
+      "words": [
+        {
+          "id": "caption-word-7-0",
+          "text": "觉得需要天价算力？",
+          "start": 42.81,
+          "end": 44.74
+        },
+        {
+          "id": "caption-word-7-1",
+          "text": "有人只用一张 8G 显存的老显卡，",
+          "start": 44.69,
+          "end": 47.52
+        },
+        {
+          "id": "caption-word-7-2",
+          "text": "录了 12 秒声音，",
+          "start": 47.52,
+          "end": 49.18
+        },
+        {
+          "id": "caption-word-7-3",
+          "text": "全程断网就完成了克隆，",
+          "start": 49.18,
+          "end": 51.01
+        }
+      ]
+    },
+    {
+      "id": "caption-group-8",
+      "frame": 5,
+      "start": 51.01,
+      "end": 53.63,
+      "text": "还给孩子生成了一整段睡前故事！",
+      "words": [
+        {
+          "id": "caption-word-8-0",
+          "text": "还给孩子生成了一整段睡前故事！",
+          "start": 51.01,
+          "end": 53.51
+        }
+      ]
+    },
+    {
+      "id": "caption-group-9",
+      "frame": 6,
+      "start": 53.66,
+      "end": 60.85,
+      "text": "普通电脑就能跑， 完全属于你自己的声音分身。 你想用它来做什么？ 评论区聊聊！",
+      "words": [
+        {
+          "id": "caption-word-9-0",
+          "text": "普通电脑就能跑，",
+          "start": 53.66,
+          "end": 55.11
+        },
+        {
+          "id": "caption-word-9-1",
+          "text": "完全属于你自己的声音分身。",
+          "start": 55.11,
+          "end": 57.47
+        },
+        {
+          "id": "caption-word-9-2",
+          "text": "你想用它来做什么？",
+          "start": 57.42,
+          "end": 59.29
+        },
+        {
+          "id": "caption-word-9-3",
+          "text": "评论区聊聊！",
+          "start": 59.29,
+          "end": 60.73
+        }
+      ]
+    }
+  ]
+}

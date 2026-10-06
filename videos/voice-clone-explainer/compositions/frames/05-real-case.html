@@ -1,0 +1,286 @@
+<template>
+  <style>
+    @font-face { font-family: "Newsreader"; src: local("Newsreader"), local("Georgia"); }
+    @font-face { font-family: "Hanken Grotesk"; src: local("Hanken Grotesk"), local("system-ui"); }
+    @font-face { font-family: "DM Mono"; src: local("DM Mono"), local("monospace"); }
+
+    #root {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      font-family: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #1F2BE0;
+      box-sizing: border-box;
+    }
+
+    .clip {
+      position: absolute;
+      inset: 0;
+      width: 1080px;
+      height: 1920px;
+    }
+
+    .f05-bg {
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(to right, rgba(31, 43, 224, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(31, 43, 224, 0.08) 1px, transparent 1px);
+      background-size: 36px 36px;
+    }
+
+    .f05-hairline-top {
+      position: absolute;
+      top: 60px;
+      left: 60px;
+      right: 60px;
+      height: 2px;
+      background: #1F2BE0;
+    }
+    .f05-hairline-bottom {
+      position: absolute;
+      bottom: 340px;
+      left: 60px;
+      right: 60px;
+      height: 2px;
+      background: #1F2BE0;
+    }
+
+    .f05-header {
+      position: absolute;
+      top: 80px;
+      left: 60px;
+      right: 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: "DM Mono", monospace;
+      font-size: 22px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .f05-container {
+      position: absolute;
+      top: 150px;
+      left: 60px;
+      right: 60px;
+      bottom: 360px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+    }
+
+    /* Question Hook */
+    .f05-myth-box {
+      width: 100%;
+      border: 3px solid #1F2BE0;
+      background: #E6E0CE;
+      padding: 30px;
+      box-sizing: border-box;
+      box-shadow: 10px 10px 0px #1F2BE0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .f05-myth-text {
+      font-size: 38px;
+      font-weight: 800;
+      color: #1F2BE0;
+    }
+    .f05-myth-badge {
+      background: #1F2BE0;
+      color: #F0EBDE;
+      padding: 8px 20px;
+      font-family: "DM Mono", monospace;
+      font-size: 26px;
+      font-weight: 800;
+    }
+
+    /* Main Case Card */
+    .f05-card {
+      width: 100%;
+      border: 3px solid #1F2BE0;
+      background: #F0EBDE;
+      padding: 50px 40px;
+      box-shadow: 16px 16px 0px #1F2BE0;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .f05-user-stamp {
+      position: absolute;
+      top: -24px;
+      right: 40px;
+      background: #1F2BE0;
+      color: #F0EBDE;
+      padding: 6px 20px;
+      font-family: "DM Mono", monospace;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .f05-card-title {
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 58px;
+      font-weight: 900;
+      color: #1F2BE0;
+      margin-bottom: 24px;
+    }
+
+    /* Hardware spec grid */
+    .f05-hardware-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 30px;
+    }
+
+    .f05-spec-item {
+      border: 2px solid #1F2BE0;
+      background: #E6E0CE;
+      padding: 20px;
+      text-align: center;
+    }
+    .f05-spec-label {
+      font-family: "DM Mono", monospace;
+      font-size: 20px;
+      color: #5560E5;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .f05-spec-val {
+      font-size: 36px;
+      font-weight: 900;
+      color: #1F2BE0;
+    }
+
+    /* Timeline flow */
+    .f05-flow-box {
+      border: 2px solid #1F2BE0;
+      background: #F0EBDE;
+      padding: 26px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .f05-step {
+      text-align: center;
+    }
+    .f05-step-num {
+      font-family: "DM Mono", monospace;
+      font-size: 38px;
+      font-weight: 900;
+      color: #1F2BE0;
+    }
+    .f05-step-label {
+      font-size: 24px;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+    .f05-arrow {
+      font-size: 36px;
+      color: #1F2BE0;
+      font-weight: 900;
+    }
+
+    .f05-offline-pill {
+      background: #1F2BE0;
+      color: #F0EBDE;
+      display: inline-block;
+      padding: 12px 32px;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+  </style>
+
+  <div id="root" data-composition-id="05-real-case" data-width="1080" data-height="1920" data-duration="11.35">
+    <div class="clip f05-bg" data-start="0" data-duration="11.35" data-track-index="0"></div>
+
+    <div class="clip f05-content" data-start="0" data-duration="11.35" data-track-index="1">
+      <div class="f05-hairline-top"></div>
+      <div class="f05-header">
+        <span>CASE_STUDY // 真实案例</span>
+        <span>INDEX // 05</span>
+      </div>
+
+      <div class="f05-container">
+        <!-- Myth buster -->
+        <div id="f05-myth" class="f05-myth-box">
+          <div class="f05-myth-text">觉得需要天价专业算力？</div>
+          <div class="f05-myth-badge">无需云服务器 ✕</div>
+        </div>
+
+        <!-- Real hardware card -->
+        <div id="f05-card" class="f05-card">
+          <div class="f05-user-stamp">CASE BY @davinci_seven</div>
+          
+          <div class="f05-card-title">老旧显卡，本地离线克隆</div>
+
+          <div class="f05-hardware-grid">
+            <div class="f05-spec-item">
+              <div class="f05-spec-label">GPU MODEL</div>
+              <div class="f05-spec-val">RTX 2080</div>
+              <div style="font-size: 18px; color: #5560E5;">2018年老显卡</div>
+            </div>
+            <div class="f05-spec-item">
+              <div class="f05-spec-label">VRAM 显存</div>
+              <div class="f05-spec-val">8G 显存</div>
+              <div style="font-size: 18px; color: #5560E5;">家用主机配置</div>
+            </div>
+          </div>
+
+          <div class="f05-flow-box">
+            <div class="f05-step">
+              <div class="f05-step-num">12 秒</div>
+              <div class="f05-step-label">声音录制</div>
+            </div>
+            <div class="f05-arrow">➔</div>
+            <div class="f05-step">
+              <div class="f05-step-num">本地</div>
+              <div class="f05-step-label">极速微调</div>
+            </div>
+            <div class="f05-arrow">➔</div>
+            <div class="f05-step">
+              <div class="f05-step-num">66 秒</div>
+              <div class="f05-step-label">AI 睡前故事</div>
+            </div>
+          </div>
+
+          <div style="text-align: center;">
+            <div class="f05-offline-pill">
+              📶 全程断网 · 100% 本地运行
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="f05-hairline-bottom"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    window.__timelines["05-real-case"] = tl;
+
+    // Entrance
+    tl.fromTo("#f05-myth",
+      { opacity: 0, y: 40 },
+      { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+      0.2
+    );
+
+    tl.fromTo("#f05-card",
+      { opacity: 0, y: 60, scale: 0.94 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "back.out(1.2)" },
+      1.2
+    );
+  </script>
+</template>

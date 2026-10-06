@@ -1,0 +1,245 @@
+<template>
+  <style>
+    @font-face { font-family: "Newsreader"; src: local("Newsreader"), local("Georgia"); }
+    @font-face { font-family: "Hanken Grotesk"; src: local("Hanken Grotesk"), local("system-ui"); }
+    @font-face { font-family: "DM Mono"; src: local("DM Mono"), local("monospace"); }
+
+    #root {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      font-family: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #1F2BE0;
+      box-sizing: border-box;
+    }
+
+    .clip {
+      position: absolute;
+      inset: 0;
+      width: 1080px;
+      height: 1920px;
+    }
+
+    .f04-bg {
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(to right, rgba(31, 43, 224, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(31, 43, 224, 0.08) 1px, transparent 1px);
+      background-size: 36px 36px;
+    }
+
+    .f04-hairline-top {
+      position: absolute;
+      top: 60px;
+      left: 60px;
+      right: 60px;
+      height: 2px;
+      background: #1F2BE0;
+    }
+    .f04-hairline-bottom {
+      position: absolute;
+      bottom: 340px;
+      left: 60px;
+      right: 60px;
+      height: 2px;
+      background: #1F2BE0;
+    }
+
+    .f04-header {
+      position: absolute;
+      top: 80px;
+      left: 60px;
+      right: 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: "DM Mono", monospace;
+      font-size: 22px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .f04-container {
+      position: absolute;
+      top: 150px;
+      left: 60px;
+      right: 60px;
+      bottom: 360px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .f04-card {
+      width: 100%;
+      border: 3px solid #1F2BE0;
+      background: #F0EBDE;
+      padding: 50px 44px;
+      box-shadow: 16px 16px 0px #1F2BE0;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .f04-bilibili-tag {
+      position: absolute;
+      top: -26px;
+      left: 40px;
+      background: #1F2BE0;
+      color: #F0EBDE;
+      padding: 8px 24px;
+      font-family: "DM Mono", monospace;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+
+    .f04-card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      margin-bottom: 24px;
+    }
+
+    .f04-proj-name {
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 68px;
+      font-weight: 900;
+      color: #1F2BE0;
+    }
+
+    .f04-star-badge {
+      background: #1F2BE0;
+      color: #F0EBDE;
+      padding: 12px 26px;
+      font-family: "DM Mono", monospace;
+      font-size: 36px;
+      font-weight: 800;
+    }
+
+    .f04-desc {
+      font-size: 36px;
+      line-height: 1.45;
+      font-weight: 700;
+      color: #1F2BE0;
+      margin-bottom: 30px;
+    }
+
+    /* Timeline & precision ruler */
+    .f04-ruler-box {
+      border: 2px dashed #1F2BE0;
+      background: #E6E0CE;
+      padding: 30px 24px;
+      margin: 24px 0;
+      text-align: left;
+    }
+
+    .f04-ruler-title {
+      font-family: "DM Mono", monospace;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .f04-track {
+      height: 16px;
+      background: rgba(31, 43, 224, 0.2);
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .f04-progress {
+      height: 100%;
+      width: 0%;
+      background: #1F2BE0;
+      border-radius: 8px;
+    }
+
+    .f04-pills {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .f04-pill {
+      border: 2px solid #1F2BE0;
+      padding: 10px 24px;
+      font-size: 26px;
+      font-weight: 700;
+      background: #E6E0CE;
+    }
+  </style>
+
+  <div id="root" data-composition-id="04-fine-control" data-width="1080" data-height="1920" data-duration="8.32">
+    <div class="clip f04-bg" data-start="0" data-duration="8.32" data-track-index="0"></div>
+
+    <div class="clip f04-content" data-start="0" data-duration="8.32" data-track-index="1">
+      <div class="f04-hairline-top"></div>
+      <div class="f04-header">
+        <span>PRECISION_CONTROL // 精准控制</span>
+        <span>INDEX // 04</span>
+      </div>
+
+      <div class="f04-container">
+        <!-- Project 5: IndexTTS -->
+        <div id="f04-card" class="f04-card">
+          <div class="f04-bilibili-tag">📺 BILIBILI OPEN SOURCE // B站开源</div>
+          
+          <div class="f04-card-head">
+            <div class="f04-proj-name">5. IndexTTS</div>
+            <div class="f04-star-badge">⭐ 24.0k</div>
+          </div>
+
+          <div class="f04-desc">大厂开源，专门搞定中文情绪和精细时长控制</div>
+
+          <div class="f04-ruler-box">
+            <div class="f04-ruler-title">
+              <span>TIMELINE ALIGNMENT // 毫秒级对齐</span>
+              <span id="f04-ms">00:07.82s</span>
+            </div>
+            <div class="f04-track">
+              <div id="f04-bar" class="f04-progress"></div>
+            </div>
+          </div>
+
+          <div class="f04-pills">
+            <span class="f04-pill">⏱️ 精准时长对齐</span>
+            <span class="f04-pill">🎭 中文情绪微调</span>
+            <span class="f04-pill">🎬 适配视频剪辑</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="f04-hairline-bottom"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    window.__timelines["04-fine-control"] = tl;
+
+    // Card entrance
+    tl.fromTo("#f04-card",
+      { opacity: 0, y: 50, scale: 0.94 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "power2.out" },
+      0.3
+    );
+
+    // Progress bar animation across frame duration
+    tl.fromTo("#f04-bar",
+      { width: "0%" },
+      { width: "100%", duration: 6.5, ease: "linear" },
+      0.8
+    );
+  </script>
+</template>

@@ -1,0 +1,244 @@
+{
+  "tts_provider": "edge-tts",
+  "voice_id": "zh-CN-YunyangNeural",
+  "bgm": null,
+  "bgm_pending": false,
+  "voices": [
+    {
+      "frame": 1,
+      "path": "assets/voice/01.wav",
+      "duration_s": 8.83,
+      "words": [
+        {
+          "id": "w0",
+          "text": "想用自己的声音讲小说、",
+          "start": 0.1,
+          "end": 2.12
+        },
+        {
+          "id": "w1",
+          "text": "录播客，",
+          "start": 2.12,
+          "end": 2.86
+        },
+        {
+          "id": "w2",
+          "text": "却不想天天泡录音棚？",
+          "start": 2.86,
+          "end": 4.69
+        },
+        {
+          "id": "w3",
+          "text": "告诉你，",
+          "start": 4.64,
+          "end": 5.36
+        },
+        {
+          "id": "w4",
+          "text": "现在的AI声音克隆，",
+          "start": 5.36,
+          "end": 7.15
+        },
+        {
+          "id": "w5",
+          "text": "早已经没有门槛了！",
+          "start": 7.15,
+          "end": 8.76
+        }
+      ]
+    },
+    {
+      "frame": 2,
+      "path": "assets/voice/02.wav",
+      "duration_s": 13.92,
+      "words": [
+        {
+          "id": "w0",
+          "text": "先看最火的两个：",
+          "start": 0.1,
+          "end": 1.34
+        },
+        {
+          "id": "w1",
+          "text": "GPT-SoVITS 狂揽 6 万多星，",
+          "start": 1.34,
+          "end": 4.45
+        },
+        {
+          "id": "w2",
+          "text": "只录 5 秒就能克隆，",
+          "start": 4.45,
+          "end": 6.16
+        },
+        {
+          "id": "w3",
+          "text": "中文生态最成熟；",
+          "start": 6.16,
+          "end": 7.4
+        },
+        {
+          "id": "w4",
+          "text": "VoxCPM 拥有 3.7 万星，",
+          "start": 7.4,
+          "end": 10.04
+        },
+        {
+          "id": "w5",
+          "text": "支持 30 种语言，",
+          "start": 10.04,
+          "end": 11.59
+        },
+        {
+          "id": "w6",
+          "text": "情绪语速全能控，",
+          "start": 11.59,
+          "end": 12.83
+        },
+        {
+          "id": "w7",
+          "text": "还能直接商用。",
+          "start": 12.83,
+          "end": 13.92
+        }
+      ]
+    },
+    {
+      "frame": 3,
+      "path": "assets/voice/03.wav",
+      "duration_s": 12.14,
+      "words": [
+        {
+          "id": "w0",
+          "text": "想跨语言？",
+          "start": 0.1,
+          "end": 1.45
+        },
+        {
+          "id": "w1",
+          "text": "3.7 万星的 OpenVoice 主打即时多语种克隆，",
+          "start": 1.4,
+          "end": 5.45
+        },
+        {
+          "id": "w2",
+          "text": "轻量开源；",
+          "start": 5.45,
+          "end": 6.17
+        },
+        {
+          "id": "w3",
+          "text": "而 3.2 万星的 Fish Speech，",
+          "start": 6.17,
+          "end": 9.35
+        },
+        {
+          "id": "w4",
+          "text": "中文自然度和情绪拉满，",
+          "start": 9.35,
+          "end": 10.94
+        },
+        {
+          "id": "w5",
+          "text": "商用需单独授权。",
+          "start": 10.94,
+          "end": 12.1
+        }
+      ]
+    },
+    {
+      "frame": 4,
+      "path": "assets/voice/04.wav",
+      "duration_s": 7.82,
+      "words": [
+        {
+          "id": "w0",
+          "text": "还有 B 站开源的 IndexTTS，",
+          "start": 0.1,
+          "end": 3.29
+        },
+        {
+          "id": "w1",
+          "text": "拿下 2.4 万星，",
+          "start": 3.29,
+          "end": 4.96
+        },
+        {
+          "id": "w2",
+          "text": "专门搞定中文情绪和精细的时长控制。",
+          "start": 4.96,
+          "end": 7.81
+        }
+      ]
+    },
+    {
+      "frame": 5,
+      "path": "assets/voice/05.wav",
+      "duration_s": 10.85,
+      "words": [
+        {
+          "id": "w0",
+          "text": "觉得需要天价算力？",
+          "start": 0.1,
+          "end": 2.03
+        },
+        {
+          "id": "w1",
+          "text": "有人只用一张 8G 显存的老显卡，",
+          "start": 1.98,
+          "end": 4.81
+        },
+        {
+          "id": "w2",
+          "text": "录了 12 秒声音，",
+          "start": 4.81,
+          "end": 6.47
+        },
+        {
+          "id": "w3",
+          "text": "全程断网就完成了克隆，",
+          "start": 6.47,
+          "end": 8.3
+        },
+        {
+          "id": "w4",
+          "text": "还给孩子生成了一整段睡前故事！",
+          "start": 8.3,
+          "end": 10.8
+        }
+      ]
+    },
+    {
+      "frame": 6,
+      "path": "assets/voice/06.wav",
+      "duration_s": 7.22,
+      "words": [
+        {
+          "id": "w0",
+          "text": "普通电脑就能跑，",
+          "start": 0.1,
+          "end": 1.55
+        },
+        {
+          "id": "w1",
+          "text": "完全属于你自己的声音分身。",
+          "start": 1.55,
+          "end": 3.91
+        },
+        {
+          "id": "w2",
+          "text": "你想用它来做什么？",
+          "start": 3.86,
+          "end": 5.73
+        },
+        {
+          "id": "w3",
+          "text": "评论区聊聊！",
+          "start": 5.73,
+          "end": 7.17
+        }
+      ]
+    }
+  ],
+  "sfx": [],
+  "total_duration_s": 60.78
+}

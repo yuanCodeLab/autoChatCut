@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Cache & logs
+.cache/
+*.log
+npm-debug.log*
+yarn-debug.log*
+.tmp/
+tmp/
+
+# Build artifacts (keep renders & snapshots)
+.hyperframes/extract-cache/
+.hyperframes/fonts/
