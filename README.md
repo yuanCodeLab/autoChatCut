@@ -24,6 +24,7 @@ autoChatCut/
 ├── README.md                              # 项目说明
 ├── .gitignore
 ├── docs/
+│   ├── macos-setup-guide.md               # macOS 搭建与部署指南（含 Apple Silicon M系列芯片与 MPS 加速）
 │   └── windows-setup-guide.md             # Windows 搭建与部署指南（含 GPT-SoVITS 8G 显卡实操）
 └── videos/
     └── voice-clone-explainer/             # 视频工程源码
@@ -77,4 +78,5 @@ hyperframes render . --output renders/video.mp4
 ---
 
 ## 📖 相关文档
+- [macOS 搭建与 Apple Silicon MPS 声音克隆指南](docs/macos-setup-guide.md)
 - [Windows 搭建与本地 8G 显卡声音克隆指南](docs/windows-setup-guide.md)
